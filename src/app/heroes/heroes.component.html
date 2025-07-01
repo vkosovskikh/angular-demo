@@ -1,6 +1,6 @@
-<h2>{{ hero.name | uppercase }} Details</h2>
+<h2 class="mat-headline">{{ hero.name | uppercase }} Details</h2>
 
-<div>
-  <label for="name">Hero name:</label>
-  <input id="name" [(ngModel)]="hero.name" placeholder="name" />
-</div>
+<mat-form-field>
+  <mat-label>Hero name:</mat-label>
+  <input matInput type="text" [(ngModel)]="hero.name" placeholder="name" />
+</mat-form-field>
