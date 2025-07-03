@@ -14,9 +14,6 @@ yarn-error.log*
 *.js
 *.js.map
 
-# Environment files
-/src/environments/environment*.ts
-
 # IDEs and editors
 .vscode
 .idea
