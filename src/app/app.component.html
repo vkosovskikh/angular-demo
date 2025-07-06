@@ -3,7 +3,17 @@
 </mat-toolbar>
 
 <div class="content-container">
-  <app-heroes></app-heroes>
-</div>
+  <app-create-hero></app-create-hero>
 
-<router-outlet></router-outlet>
+  <div class="heroes-container">
+    <div class="heroes-list">
+      <app-heroes></app-heroes>
+    </div>
+
+    <div class="hero-detail">
+      <app-hero-detail [hero]="selectedHero$ | async"></app-hero-detail>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

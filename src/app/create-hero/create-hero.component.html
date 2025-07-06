@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title>Create New Hero</mat-card-title>
+
+  <mat-card-content>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Hero name</mat-label>
+      <input
+        matInput
+        [(ngModel)]="heroName"
+        (keyup.enter)="createHero()"
+        placeholder="Enter name"
+      />
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-actions align="start">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="createHero()"
+      [disabled]="!heroName.trim()"
+    >
+      <mat-icon>add</mat-icon>
+      Add Hero
+    </button>
+  </mat-card-actions>
+</mat-card>

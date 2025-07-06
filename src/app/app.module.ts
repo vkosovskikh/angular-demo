@@ -9,10 +9,23 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { HeroDetailComponent } from "./hero-detail/hero-detail.component";
+import { HttpClientModule } from "@angular/common/http";
+import { MatListModule } from "@angular/material/list";
+import { MatIconModule } from "@angular/material/icon";
+import { MatCardModule } from "@angular/material/card";
+import { CreateHeroComponent } from "./create-hero/create-hero.component";
+import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
-  declarations: [AppComponent, HeroesComponent],
+  declarations: [
+    AppComponent,
+    HeroesComponent,
+    HeroDetailComponent,
+    CreateHeroComponent,
+  ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -20,6 +33,10 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
+    MatListModule,
+    MatIconModule,
+    MatCardModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,3 +1,15 @@
 .content-container {
   padding: 1rem;
 }
+
+.heroes-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.heroes-list,
+.hero-detail {
+  flex: 1;
+}

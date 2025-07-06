@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Hero } from "../hero";
+import { HeroesService } from "../services/heroes.service";
 
 @Component({
   selector: "app-heroes",
@@ -7,12 +8,21 @@ import { Hero } from "../hero";
   styleUrls: ["./heroes.component.scss"],
 })
 export class HeroesComponent implements OnInit {
-  hero: Hero = {
-    id: 1,
-    name: "Windstorm",
-  };
+  heroes$ = this.heroesService.heroes$;
+  selectedHero$ = this.heroesService.selectedHero$;
 
-  constructor() {}
+  constructor(private heroesService: HeroesService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.heroesService.fetchHeroes();
+  }
+
+  onHeroClick(id: string): void {
+    this.heroesService.selectHero(id);
+  }
+
+  onDeleteHeroClick(id: string, event: MouseEvent): void {
+    event.stopPropagation();
+    this.heroesService.deleteHero(id);
+  }
 }

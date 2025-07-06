@@ -1,6 +1,18 @@
-<h2 class="mat-headline">{{ hero.name | uppercase }} Details</h2>
+<mat-card>
+  <mat-card-title>All Heroes</mat-card-title>
 
-<mat-form-field>
-  <mat-label>Hero name:</mat-label>
-  <input matInput type="text" [(ngModel)]="hero.name" placeholder="name" />
-</mat-form-field>
+  <mat-card-content>
+    <mat-action-list>
+      <mat-list-item
+        *ngFor="let hero of heroes$ | async"
+        (click)="onHeroClick(hero.id)"
+      >
+        <div mat-line>{{ hero.name }}</div>
+
+        <button mat-icon-button (click)="onDeleteHeroClick(hero.id, $event)">
+          <mat-icon fontIcon="delete">delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-action-list>
+  </mat-card-content>
+</mat-card>

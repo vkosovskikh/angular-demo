@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-title>Hero Detail</mat-card-title>
+
+  <mat-card-content>
+    <div *ngIf="!hero">No hero selected</div>
+
+    <div *ngIf="hero">
+      <p><strong>ID:</strong> {{ hero.id }}</p>
+      <p><strong>Name:</strong> {{ hero.name }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>
