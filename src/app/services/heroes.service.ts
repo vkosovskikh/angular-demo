@@ -64,4 +64,16 @@ export class HeroesService {
       })
     );
   }
+
+  updateHero(hero: Hero): Observable<Hero | null> {
+    const url = `${this.heroesUrl}/${hero.id}`;
+
+    return this.http.put<Hero>(url, hero).pipe(
+      tap((data) => console.log("Updated hero:", data)),
+      catchError((err) => {
+        console.error("Error updating hero:", err);
+        return of(null);
+      })
+    );
+  }
 }

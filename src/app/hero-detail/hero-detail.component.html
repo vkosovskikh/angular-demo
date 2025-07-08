@@ -5,8 +5,35 @@
     <div *ngIf="!hero">No hero selected</div>
 
     <div *ngIf="hero">
-      <p><strong>ID:</strong> {{ hero.id }}</p>
-      <p><strong>Name:</strong> {{ hero.name }}</p>
+      <div><strong>ID:</strong> {{ hero.id }}</div>
+      <div>
+        <strong>Name:</strong>
+        <mat-form-field appearance="fill">
+          <mat-label>Hero name</mat-label>
+          <input
+            matInput
+            [formControl]="heroNameControl"
+            (keyup.enter)="(onUpdateHeroClick)"
+            placeholder="Enter name"
+          />
+          <mat-error *ngIf="heroNameControl.hasError('required')">
+            Имя обязательно
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-card-actions align="start">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="onUpdateHeroClick()"
+            [disabled]="heroNameControl.invalid"
+          >
+            Update Hero
+          </button>
+        </mat-card-actions>
+      </div>
     </div>
   </mat-card-content>
 </mat-card>

@@ -1,1 +1,12 @@
-<p>hero-detail-page works!</p>
+<button mat-raised-button (click)="goBack()">
+  <mat-icon>arrow_back</mat-icon>
+  <span class="back-button-text">Back</span>
+</button>
+
+<div class="hero-detail-container">
+  <app-hero-detail
+    [hero]="hero"
+    [heroNameControl]="heroNameControl"
+    [updateHero]="updateHero"
+  ></app-hero-detail>
+</div>

@@ -21,6 +21,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { HeroesPageComponent } from "./heroes-page/heroes-page.component";
 import { HeroDetailPageComponent } from "./hero-detail-page/hero-detail-page.component";
 import { DashboardPageComponent } from "./dashboard-page/dashboard-page.component";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { DashboardPageComponent } from "./dashboard-page/dashboard-page.componen
     MatCardModule,
     MatButtonModule,
     MatTabsModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,1 +1,18 @@
-<p>dashboard works!</p>
+<mat-form-field class="form-field">
+  <input
+    type="text"
+    matInput
+    [formControl]="searchControl"
+    [matAutocomplete]="auto"
+    placeholder="Search hero"
+  />
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    (optionSelected)="selectHero($event.option.value)"
+    [displayWith]="displayFn"
+  >
+    <mat-option *ngFor="let hero of filteredHeroes$ | async" [value]="hero.id">
+      {{ hero.name }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
