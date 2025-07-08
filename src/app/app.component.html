@@ -1,19 +1,22 @@
 <mat-toolbar color="primary">
-  <span>{{ title }}</span>
+  <span>My App</span>
+
+  <nav class="nav-links">
+    <a
+      class="nav-link"
+      routerLink="/dashboard"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Dashboard
+    </a>
+
+    <a class="nav-link" routerLink="/heroes" routerLinkActive="active-link">
+      Heroes
+    </a>
+  </nav>
 </mat-toolbar>
 
 <div class="content-container">
-  <app-create-hero></app-create-hero>
-
-  <div class="heroes-container">
-    <div class="heroes-list">
-      <app-heroes></app-heroes>
-    </div>
-
-    <div class="hero-detail">
-      <app-hero-detail [hero]="selectedHero$ | async"></app-hero-detail>
-    </div>
-  </div>
-
   <router-outlet></router-outlet>
 </div>

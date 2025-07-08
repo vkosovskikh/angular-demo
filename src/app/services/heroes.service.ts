@@ -7,72 +7,61 @@ import { Hero } from "../hero";
 export class HeroesService {
   private heroesUrl = "https://65b212569bfb12f6eafcbd56.mockapi.io/api/Heros"; // URL to web api
 
-  private heroesSubject = new BehaviorSubject<Hero[]>([]);
-  heroes$ = this.heroesSubject.asObservable();
-
-  private selectedHeroSubject = new BehaviorSubject<Hero | null>(null);
-  selectedHero$ = this.selectedHeroSubject.asObservable();
-
   constructor(private http: HttpClient) {}
 
-  fetchHeroes(): void {
-    this.http
-      .get<Hero[]>(this.heroesUrl)
-      .pipe(
-        tap((data) => console.log("Fetched heroes:", data)),
-        catchError((err) => {
-          console.error("Error fetching heroes:", err);
-          return of([]);
-        })
-      )
-      .subscribe((heroes) => this.heroesSubject.next(heroes));
+  fetchHeroes(): Observable<Hero[]> {
+    return this.http.get<Hero[]>(this.heroesUrl).pipe(
+      tap((data) => console.log("Fetched heroes:", data)),
+      catchError((err) => {
+        console.error("Error fetching heroes:", err);
+        return of([]);
+      })
+    );
   }
 
-  selectHero(id: string): void {
-    const heroes = this.heroesSubject.getValue();
-    const hero = heroes.find((h) => h.id === id) || null;
-    this.selectedHeroSubject.next(hero);
-  }
-
-  deleteHero(id: string): void {
+  fetchOneHero(id: string): Observable<Hero | null> {
     const url = `${this.heroesUrl}/${id}`;
 
-    this.http
-      .delete<Hero>(url)
-      .pipe(
-        tap(() => {
-          const currentHeroes = this.heroesSubject.getValue();
-          const updated = currentHeroes.filter((h) => h.id !== id);
-          this.heroesSubject.next(updated);
-
-          const selected = this.selectedHeroSubject.getValue();
-          if (selected && selected.id === id) {
-            this.selectedHeroSubject.next(null);
-          }
-        }),
-        catchError((err) => {
-          console.error("Error deleting hero:", err);
-          return of(null);
-        })
-      )
-      .subscribe();
+    return this.http.get<Hero>(url).pipe(
+      tap((data) => console.log("Fetched hero:", data)),
+      catchError((err) => {
+        console.error("Error fetching hero:", err);
+        return of(null);
+      })
+    );
   }
 
-  addHero(name: string): void {
+  searchHeroes(term: string): Observable<Hero[]> {
+    return this.http.get<Hero[]>(`${this.heroesUrl}?search=${term}`).pipe(
+      tap((heroes) => console.log("Fetched heroes:", heroes)),
+      catchError((err) => {
+        console.error("Error fetching heroes:", err);
+        return of([]);
+      })
+    );
+  }
+
+  addHero(name: string): Observable<Hero | null> {
     const newHero = { name };
 
-    this.http
-      .post<Hero>(this.heroesUrl, newHero)
-      .pipe(
-        tap((createdHero) => {
-          const updated = [...this.heroesSubject.getValue(), createdHero];
-          this.heroesSubject.next(updated);
-        }),
-        catchError((err) => {
-          console.error("Error adding hero:", err);
-          return of(null);
-        })
-      )
-      .subscribe();
+    return this.http.post<Hero>(this.heroesUrl, newHero).pipe(
+      tap((data) => console.log("Created hero:", data)),
+      catchError((err) => {
+        console.error("Error adding hero:", err);
+        return of(null);
+      })
+    );
+  }
+
+  deleteHero(id: string): Observable<Hero | null> {
+    const url = `${this.heroesUrl}/${id}`;
+
+    return this.http.delete<Hero>(url).pipe(
+      tap((data) => console.log("Deleted hero:", data)),
+      catchError((err) => {
+        console.error("Error deleting hero:", err);
+        return of(null);
+      })
+    );
   }
 }

@@ -2,14 +2,26 @@
   padding: 1rem;
 }
 
-.heroes-container {
+.nav-links {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-top: 1rem;
+  margin-left: 1rem;
 }
 
-.heroes-list,
-.hero-detail {
-  flex: 1;
+.nav-link {
+  font-size: 0.85rem;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.active-link {
+  background-color: rgba(255, 255, 255, 0.2);
 }

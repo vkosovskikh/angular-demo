@@ -4,8 +4,8 @@
   <mat-card-content>
     <mat-action-list>
       <mat-list-item
-        *ngFor="let hero of heroes$ | async"
-        (click)="onHeroClick(hero.id)"
+        *ngFor="let hero of heroes"
+        [routerLink]="['/heroes', hero.id]"
       >
         <div mat-line>{{ hero.name }}</div>
 

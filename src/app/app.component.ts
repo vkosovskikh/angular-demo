@@ -9,9 +9,6 @@ import { HeroesService } from "./services/heroes.service";
 export class AppComponent {
   title = "Tour of Heroes";
 
-  heroes$ = this.heroesService.heroes$;
-  selectedHero$ = this.heroesService.selectedHero$;
-
   constructor(private heroesService: HeroesService) {}
 
   ngOnInit(): void {
