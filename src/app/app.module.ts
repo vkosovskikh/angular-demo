@@ -22,6 +22,9 @@ import { HeroesPageComponent } from "./heroes-page/heroes-page.component";
 import { HeroDetailPageComponent } from "./hero-detail-page/hero-detail-page.component";
 import { DashboardPageComponent } from "./dashboard-page/dashboard-page.component";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { ParallelRequestContainerComponent } from "./parallel-request-container/parallel-request-container.component";
+import { ParallelRequestCardComponent } from "./parallel-request-card/parallel-request-card.component";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
     HeroesPageComponent,
     HeroDetailPageComponent,
     DashboardPageComponent,
+    ParallelRequestContainerComponent,
+    ParallelRequestCardComponent,
   ],
   imports: [
     HttpClientModule,
@@ -50,6 +55,7 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
     MatButtonModule,
     MatTabsModule,
     MatAutocompleteModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

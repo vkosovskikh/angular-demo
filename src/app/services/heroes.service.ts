@@ -19,10 +19,11 @@ export class HeroesService {
     );
   }
 
-  fetchOneHero(id: string): Observable<Hero | null> {
+  fetchOneHero(id: string, delayMs = 0): Observable<Hero | null> {
     const url = `${this.heroesUrl}/${id}`;
 
     return this.http.get<Hero>(url).pipe(
+      delay(delayMs),
       tap((data) => console.log("Fetched hero:", data)),
       catchError((err) => {
         console.error("Error fetching hero:", err);

@@ -1,0 +1,23 @@
+<div [ngSwitch]="status" class="cards-container">
+  <div *ngSwitchCase="'waiting'" class="card">
+    <span>Ожидание</span>
+  </div>
+
+  <div *ngSwitchCase="'loading'" class="card">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <div *ngSwitchCase="'error'" class="card">
+    <span>Ошибка</span>
+  </div>
+
+  <div *ngSwitchCase="'done'" class="card">
+    <div *ngIf="hero">
+      <div><strong>id:</strong> {{ hero.id }}</div>
+      <div>
+        <strong>name:</strong>
+        {{ hero.name }}
+      </div>
+    </div>
+  </div>
+</div>

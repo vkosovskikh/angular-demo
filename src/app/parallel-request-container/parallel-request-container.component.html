@@ -1,0 +1,19 @@
+<button mat-raised-button color="primary" (click)="getParallelHeroes()">
+  Параллельно
+</button>
+<button
+  mat-raised-button
+  color="accent"
+  (click)="getSequentialHeroes()"
+  [style]="{ 'margin-left': '1rem' }"
+>
+  Последовательно
+</button>
+
+<div class="cards-container">
+  <app-parallel-request-card
+    *ngFor="let hero of loadedHeroes; let i = index"
+    [hero]="hero"
+    [status]="loadedHeroesStatus[i]"
+  ></app-parallel-request-card>
+</div>
